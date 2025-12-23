@@ -1,0 +1,127 @@
+{
+  "name": "imaginary-sea-raft",
+  "display_name": "虚数海筏",
+  "description": "一款通过垂钓与未知生物进行道德博弈的网页游戏。在虚数海中垂钓神秘生物，每一次抉择都会影响你的命运。",
+  "version": "1.0.0",
+  "author": "Imaginary Sea Raft Team",
+  "homepage": "https://imaginary-sea-raft.example.com",
+  "icon": "https://imaginary-sea-raft.example.com/icon.png",
+  "categories": ["games", "entertainment", "ai-powered"],
+  "tools": [
+    {
+      "name": "cast_fishing_rod",
+      "description": "在虚数海中抛竿垂钓，根据当前天气状态捕获神秘生物",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "weather_preference": {
+            "type": "string",
+            "description": "期望的天气类型（可选）",
+            "enum": ["sunny", "bloodRain", "fog", "storm", "aurora"]
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "make_choice",
+      "description": "对捕获的生物做出抉择：消化（恢复体力）、收藏（获得金币）或放生（获取情报）",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "choice": {
+            "type": "string",
+            "description": "玩家的选择",
+            "enum": ["consume", "collect", "release"]
+          },
+          "fish_id": {
+            "type": "string",
+            "description": "目标生物的ID"
+          }
+        },
+        "required": ["choice", "fish_id"]
+      }
+    },
+    {
+      "name": "view_stats",
+      "description": "查看当前的游戏状态，包括体力、金币和业力值",
+      "input_schema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "view_collection",
+      "description": "查看已收藏的生物列表",
+      "input_schema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "change_weather",
+      "description": "改变当前的天气状态",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "weather_type": {
+            "type": "string",
+            "description": "目标天气类型",
+            "enum": ["sunny", "bloodRain", "fog", "storm", "aurora"]
+          }
+        },
+        "required": ["weather_type"]
+      }
+    }
+  ],
+  "prompts": [
+    {
+      "name": "game_introduction",
+      "description": "游戏介绍和规则说明",
+      "arguments": []
+    },
+    {
+      "name": "fish_dialogue",
+      "description": "生成被捕获生物的对话",
+      "arguments": [
+        {
+          "name": "fish_name",
+          "description": "生物名称",
+          "required": true
+        },
+        {
+          "name": "personality",
+          "description": "生物性格",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "uri": "game://state",
+      "name": "游戏状态",
+      "description": "当前游戏的完整状态信息",
+      "mime_type": "application/json"
+    },
+    {
+      "uri": "game://collection",
+      "name": "收藏列表",
+      "description": "玩家收藏的所有生物",
+      "mime_type": "application/json"
+    }
+  ],
+  "server": {
+    "url": "https://imaginary-sea-raft.example.com/mcp",
+    "transport": "sse"
+  },
+  "widget": {
+    "url": "https://imaginary-sea-raft.example.com",
+    "width": 800,
+    "height": 600,
+    "resizable": true
+  }
+}
+
