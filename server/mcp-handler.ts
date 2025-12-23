@@ -323,7 +323,7 @@ async function generateFish(session: GameSession) {
 }`;
 
   const completion = await openai.chat.completions.create({
-    model: 'gpt-4o',
+    model: 'gpt-5-mini',
     messages: [
       {
         role: 'system',
@@ -405,7 +405,7 @@ ${session.collection.length > 0 ? `- 收藏的生物：${session.collection.map(
 请根据以上信息，创作这个结局的完整叙事。回顾玩家的旅程，揭示虚数海的秘密，给予一个富有诗意和哲理的结局。`;
 
   const stream = await openai.chat.completions.create({
-    model: 'gpt-4o',
+    model: 'gpt-5-mini',
     messages: [
       {
         role: 'system',

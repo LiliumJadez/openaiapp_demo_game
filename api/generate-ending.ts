@@ -21,7 +21,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.setHeader('Connection', 'keep-alive');
 
     const stream = await openai.chat.completions.create({
-      model: 'gpt-4o',
+      model: 'gpt-5-mini',
       messages: [
         {
           role: 'system',

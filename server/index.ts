@@ -211,7 +211,7 @@ app.post('/api/personalize-fish', async (req, res) => {
 以JSON格式返回，字段: originalName, dialogue, loreFragment`;
     
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini', // 改用更稳定的模型
+      model: 'gpt-5-mini', // 改用更稳定的模型
       messages: [
         {
           role: 'system',
@@ -578,7 +578,7 @@ async function verifyOpenAIConnection(): Promise<boolean> {
     
     // 测试文本生成
     const textTest = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'gpt-5-mini',
       messages: [{ role: 'user', content: 'Say "ok" only' }],
       max_tokens: 10,
     });

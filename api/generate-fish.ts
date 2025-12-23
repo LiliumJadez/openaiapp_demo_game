@@ -16,7 +16,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const prompt = buildFishGenerationPrompt(weather, karmaStats);
 
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o',
+      model: 'gpt-5-mini',
       messages: [
         {
           role: 'system',
